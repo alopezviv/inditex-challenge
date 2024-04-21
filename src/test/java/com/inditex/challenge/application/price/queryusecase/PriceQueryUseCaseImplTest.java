@@ -37,19 +37,19 @@ class PriceQueryUseCaseImplTest {
         price = new Price(
                 1, actualDate,actualDate,1,1,1,1.0f,"EUR"
         );
-        priceQueryModelInput = new PriceQueryModelInput(LocalDateTime.now(),1,1);
+        priceQueryModelInput = new PriceQueryModelInput(1,1);
         priceQueryModelOutput = new PriceQueryModelOutput(1, actualDate,actualDate,1,1,1.0f,"EUR");
         priceQueryUseCaseUnderTest = new PriceQueryUseCaseImpl(iPriceRepository, objectMapper);
     }
     @Test
     void getPrice() {
         when(iPriceRepository.getPricesByDateProductIdAndBrandId(any(),eq(1),eq(1))).thenReturn(List.of(price));
-        assertEquals(priceQueryModelOutput, priceQueryUseCaseUnderTest.getPrice(priceQueryModelInput));
+        assertEquals(priceQueryModelOutput, priceQueryUseCaseUnderTest.getPrice(priceQueryModelInput,LocalDateTime.now()));
     }
     @Test
     void getPrice_throwPriceNotFoundException() {
         when(iPriceRepository.getPricesByDateProductIdAndBrandId(any(),eq(1),eq(1))).thenReturn(List.of());
-        assertThrows(PriceNotFoundException.class,()->priceQueryUseCaseUnderTest.getPrice(priceQueryModelInput));
+        assertThrows(PriceNotFoundException.class,()->priceQueryUseCaseUnderTest.getPrice(priceQueryModelInput,LocalDateTime.now()));
 
     }
 

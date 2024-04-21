@@ -2,11 +2,12 @@ package com.inditex.challenge.infrastructure.price.repository.h2.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
-
-@Entity
 @Data
+@Entity
+
 @Table(name = "prices")
 public class PriceEntity {
     @Id

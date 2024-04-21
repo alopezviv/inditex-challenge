@@ -10,6 +10,7 @@ import com.inditex.challenge.domain.price.exceptions.PriceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -25,9 +26,9 @@ public class PriceQueryUseCaseImpl implements IPriceQueryUseCase{
 
 
     @Override
-    public PriceQueryModelOutput getPrice(PriceQueryModelInput priceQueryModelInput) {
+    public PriceQueryModelOutput getPrice(PriceQueryModelInput priceQueryModelInput,    LocalDateTime applicationDate) {
         List<Price> filteredPrices = iPriceRepository.getPricesByDateProductIdAndBrandId(
-                priceQueryModelInput.applicationDate(), priceQueryModelInput.productId(), priceQueryModelInput.brandId());
+                applicationDate, priceQueryModelInput.productId(), priceQueryModelInput.brandId());
         if(filteredPrices.isEmpty()){
             throw new PriceNotFoundException(priceQueryModelInput.toString());
         }

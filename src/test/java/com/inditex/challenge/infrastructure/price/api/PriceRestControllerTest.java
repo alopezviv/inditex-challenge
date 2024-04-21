@@ -30,5 +30,6 @@ class PriceRestControllerTest {
                 .param("brandId","1")
                 .param("productId", "1")
                 .accept(MediaType.APPLICATION_JSON));
+
     }
 }

@@ -1,4 +1,4 @@
-package com.inditex.challenge.domain;
+package com.inditex.challenge.domain.price;
 
 import java.time.LocalDateTime;
 import java.util.Currency;

@@ -1,13 +1,16 @@
 package com.inditex.challenge.infrastructure.price.repository.h2.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 @Data
 @Entity
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "prices")
 public class PriceEntity {
     @Id
